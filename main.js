@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // Copyright (C) 2018 Quentin VERLHAC
 
 // Permission to use, copy, modify, and/or distribute this software for any
@@ -17,7 +19,11 @@
 // Commander is a solution for creating command-line interface
 const program = require('commander');
 
-program.version('0.1.0');
+// Define metadata of the application
+program
+  .version('0.1.0')
+  .description('A website monitoring application');
+
 
 program.parse(process.argv);
 
