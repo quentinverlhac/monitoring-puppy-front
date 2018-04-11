@@ -19,11 +19,19 @@
 // Commander is a solution for creating command-line interface
 const program = require('commander');
 
+function addWebsite(website, url, time_interval) {
+  console.log('Puppy will now check %s (%s) every %s seconds', website, url, time_interval);
+}
+
 // Define metadata of the application
 program
   .version('0.1.0')
   .description('A website monitoring application');
 
+// Add website command
+program
+  .command('add <website> <url> <time_interval>')
+  .action(addWebsite);
 
 program.parse(process.argv);
 
