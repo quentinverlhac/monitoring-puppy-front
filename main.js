@@ -23,6 +23,10 @@ function addWebsite(website, url, time_interval) {
   console.log('Puppy will now check %s (%s) every %s seconds', website, url, time_interval);
 }
 
+function listWebsites() {
+  console.log('Puppy has websites');
+}
+
 // Define metadata of the application
 program
   .version('0.1.0')
@@ -32,6 +36,10 @@ program
 program
   .command('add <website> <url> <time_interval>')
   .action(addWebsite);
+
+program
+  .command('list')
+  .action(listWebsites);
 
 program.parse(process.argv);
 
