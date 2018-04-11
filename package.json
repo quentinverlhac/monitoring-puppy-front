@@ -1,5 +1,5 @@
 {
-  "name": "monitoring-puppy-front",
+  "name": "puppy",
   "version": "0.1.0",
   "description": "The frontend of a website monitoring application",
   "main": "main.js",
