@@ -27,6 +27,10 @@ function listWebsites() {
   console.log('Puppy has websites');
 }
 
+function run() {
+  console.log('Puppy is running !');
+}
+
 // Define metadata of the application
 program
   .version('0.1.0')
@@ -40,6 +44,10 @@ program
 program
   .command('list')
   .action(listWebsites);
+
+program
+  .command('run')
+  .action(run);
 
 program.parse(process.argv);
 
