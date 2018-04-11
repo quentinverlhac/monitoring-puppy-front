@@ -27,8 +27,8 @@ function listWebsites() {
   console.log('Puppy has websites');
 }
 
-function run() {
-  console.log('Puppy is running !');
+function monitor() {
+  console.log('Puppy is monitoring !');
 }
 
 // Define metadata of the application
@@ -41,13 +41,15 @@ program
   .command('add <website> <url> <time_interval>')
   .action(addWebsite);
 
+// List monitored websites command
 program
   .command('list')
   .action(listWebsites);
 
+// Run monitoring command
 program
-  .command('run')
-  .action(run);
+  .command('monitor')
+  .action(monitor);
 
 program.parse(process.argv);
 
