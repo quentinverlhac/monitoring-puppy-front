@@ -11,3 +11,13 @@
 // WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION
 // OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
 // CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+// Import node modules
+// Commander is a solution for creating command-line interface
+const program = require('commander');
+
+program.version('0.1.0');
+
+program.parse(process.argv);
+
