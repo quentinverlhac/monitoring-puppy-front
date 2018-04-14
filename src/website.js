@@ -15,7 +15,7 @@ async function addWebsite(website, url, check_interval) {
     },
   );
   // Display a confirmation
-  console.log('Puppy will now check %s (%s) every %s seconds when it is monitoring', response.data.website, response.data.url, response.data.checkInterval);
+  console.log('Puppy will now check %s (%s) every %s seconds when it is monitoring', response.data.name, response.data.url, response.data.checkInterval);
 }
 
 // The function which handle the list command
@@ -44,12 +44,21 @@ async function updateWebsite(website, options) {
     },
   );
   // Display a confirmation
-  console.log('Puppy will now check %s (%s) every %s sec. when it is monitoring', response.data.website, response.data.url, response.data.checkInterval);
+  console.log('Puppy will now check %s (%s) every %s sec. when it is monitoring', response.data.name, response.data.url, response.data.checkInterval);
+}
+
+// The function which handle the remove command
+async function removeWebsite(website) {
+  // Send website creation request to back end
+  const response = await axios.delete(`http://localhost:8080/api/website/${website}`);
+  // Display a confirmation
+  console.log(`${response.data.name} (${response.data.url}) has been removed`);
 }
 
 module.exports = {
   addWebsite,
   listWebsites,
   updateWebsite,
+  removeWebsite,
 };
 
