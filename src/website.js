@@ -15,5 +15,19 @@ async function addWebsite(website, url, check_interval) {
   console.log('Puppy will now check %s (%s) every %s seconds when it is monitoring', website, url, check_interval);
 }
 
-module.exports = addWebsite;
+async function listWebsites() {
+  const response = await axios.get('http://localhost:8080/api/website');
+  console.log('Puppy has registered the following websites:');
+  console.log('-------------------------------------');
+  console.log('name - url - check interval (seconds)');
+  console.log('-------------------------------------');
+  response.data.map((website) => {
+    console.log(website.name, '-', website.url, '-', website.checkInterval);
+  });
+}
+
+module.exports = {
+  addWebsite,
+  listWebsites,
+};
 
