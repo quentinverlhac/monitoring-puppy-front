@@ -12,7 +12,7 @@ async function addWebsite(website, url, check_interval) {
       checkInterval: check_interval,
     },
   );
-  console.log('Puppy will now check %s (%s) every %s seconds', website, url, check_interval);
+  console.log('Puppy will now check %s (%s) every %s seconds when it is monitoring', website, url, check_interval);
 }
 
 module.exports = addWebsite;
