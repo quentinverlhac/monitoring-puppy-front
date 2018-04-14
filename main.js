@@ -18,7 +18,7 @@
 // Import node modules
 // Commander is a solution for creating command-line interface
 const program = require('commander');
-const { addWebsite, listWebsites } = require('./src/website');
+const { addWebsite, listWebsites, updateWebsite } = require('./src/website');
 
 function monitor() {
   console.log('Puppy is monitoring !');
@@ -38,6 +38,14 @@ program
 program
   .command('list')
   .action(listWebsites);
+
+// Update website command
+program
+  .command('update <website>')
+  .option('-n, --name [string]', 'the new website name')
+  .option('-u, --url [string]', 'the new website url')
+  .option('-i, --interval [number]', 'the new check interval')
+  .action(updateWebsite);
 
 // Run monitoring command
 program
