@@ -6,10 +6,7 @@ const program = require('commander');
 const {
   addWebsite, listWebsites, updateWebsite, removeWebsite,
 } = require('./src/website');
-
-function monitor() {
-  console.log('Puppy is monitoring !');
-}
+const { monitor, stop } = require('./src/monitoring');
 
 // Define metadata of the application
 program
@@ -43,6 +40,11 @@ program
 program
   .command('monitor')
   .action(monitor);
+
+// Stop monitoring command
+program
+  .command('stop')
+  .action(stop);
 
 program.parse(process.argv);
 
