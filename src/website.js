@@ -1,11 +1,12 @@
 // Import node modules
 const axios = require('axios');
+const config = require('../config.json');
 
 // The function which handle the add command
 async function addWebsite(website, url, check_interval) {
   // Send website creation request to back end
   const response = await axios.post(
-    'http://localhost:8080/api/website',
+    `${config.urlBack}/website`,
     {
       name: website,
       url,
@@ -19,7 +20,7 @@ async function addWebsite(website, url, check_interval) {
 // The function which handle the list command
 async function listWebsites() {
   // Retrieve websites from back end
-  const response = await axios.get('http://localhost:8080/api/website');
+  const response = await axios.get(`${config.urlBack}/website`);
   // Display website
   console.log('Puppy has registered the following websites:');
   console.log('-------------------------------------');
@@ -34,7 +35,7 @@ async function listWebsites() {
 async function updateWebsite(website, options) {
   // Send website update request to back end
   const response = await axios.put(
-    `http://localhost:8080/api/website/${website}`,
+    `${config.urlBack}/website/${website}`,
     {
       name: options.name,
       url: options.url,
@@ -48,7 +49,7 @@ async function updateWebsite(website, options) {
 // The function which handle the remove command
 async function removeWebsite(website) {
   // Send website creation request to back end
-  const response = await axios.delete(`http://localhost:8080/api/website/${website}`);
+  const response = await axios.delete(`${config.urlBack}/website/${website}`);
   // Display a confirmation
   console.log(`${response.data.name} (${response.data.url}) has been removed`);
 }
