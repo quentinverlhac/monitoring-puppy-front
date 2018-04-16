@@ -1,12 +1,17 @@
 // Import node modules
 const axios = require('axios');
 const config = require('../config.json');
+const displayStatistics = require('./statistics');
 
-let interval;
+const interval = [];
 
-function monitor() {
-  axios.get(`${config.urlBack}/monitoring`);
-  interval = setInterval(() => console.log('test'), 1000);
+async function monitor() {
+  await axios.get(`${config.urlBack}/monitoring`);
+  const response = await axios.get(`${config.urlBack}/website`);
+  response.data.map((website) => {
+    interval.push(setInterval(displayStatistics, 10000, website.name, 60000));
+    interval.push(setInterval(displayStatistics, 60000, website.name, 360000));
+  });
   console.log('Puppy is monitoring !');
 }
 
