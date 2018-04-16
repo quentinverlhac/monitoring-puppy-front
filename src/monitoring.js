@@ -6,14 +6,19 @@ const config = require('../config.json');
 let socket;
 
 function monitor() {
-  socket = io(config.urlBack);
   axios.get(`${config.urlBack}/monitoring`);
+  socket = io(config.urlBack);
+  socket.on('connection', (connectedSocket) => {
+    connectedSocket.on('statistics', (statistics) => {
+      console.log(statistics);
+    });
+  });
   console.log('Puppy is monitoring !');
 }
 
 function stop() {
-  axios.delete(`${config.urlBack}/monitoring`);
   socket.disconnect();
+  axios.delete(`${config.urlBack}/monitoring`);
   console.log('Puppy stopped monitoring.');
 }
 
