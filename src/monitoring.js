@@ -10,7 +10,7 @@ async function monitor() {
   const response = await axios.get(`${config.urlBack}/website`);
   response.data.map((website) => {
     interval.push(setInterval(displayStatistics, 10000, website.name, 60000));
-    interval.push(setInterval(displayStatistics, 60000, website.name, 360000));
+    interval.push(setInterval(displayStatistics, 60000, website.name, 3600000));
   });
   console.log('Puppy is monitoring !');
 }
