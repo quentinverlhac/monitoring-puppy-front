@@ -1,5 +1,6 @@
 // Import node modules
 const axios = require('axios');
+const io = require('socket.io-client');
 const config = require('../config.json');
 
 function monitor() {
