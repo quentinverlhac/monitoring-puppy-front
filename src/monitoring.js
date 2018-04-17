@@ -2,14 +2,16 @@
 const axios = require('axios');
 const config = require('../config.json');
 const displayStatistics = require('./statistics');
+const io = require('socket.io-client');
 
 const interval = [];
+let socket;
 
 function monitor() {
   axios.get(`${config.urlBack}/monitoring`);
   socket = io('http://localhost:8080');
   socket.on('statistics', (statistics) => {
-    console.log(statistics);
+    displayStatistics(statistics);
   });
   console.log('Puppy is monitoring !');
 }
