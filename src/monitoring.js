@@ -1,9 +1,9 @@
 // Import node modules
 const axios = require('axios');
-const io = require('socket.io-client');
 const config = require('../config.json');
+const displayStatistics = require('./statistics');
 
-let socket;
+const interval = [];
 
 function monitor() {
   axios.get(`${config.urlBack}/monitoring`);
@@ -15,7 +15,7 @@ function monitor() {
 }
 
 function stop() {
-  socket.disconnect();
+  clearInterval(interval);
   axios.delete(`${config.urlBack}/monitoring`);
   console.log('Puppy stopped monitoring.');
 }
