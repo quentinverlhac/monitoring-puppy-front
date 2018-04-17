@@ -2,9 +2,9 @@
 const axios = require('axios');
 const config = require('../config.json');
 const displayStatistics = require('./statistics');
+const displayAlert = require('./alerts');
 const io = require('socket.io-client');
 
-const interval = [];
 let socket;
 
 function monitor() {
@@ -13,11 +13,13 @@ function monitor() {
   socket.on('statistics', (statistics) => {
     displayStatistics(statistics);
   });
+  socket.on('alert', (alert) => {
+    displayAlert(alert);
+  });
   console.log('Puppy is monitoring !');
 }
 
 function stop() {
-  clearInterval(interval);
   axios.delete(`${config.urlBack}/monitoring`);
   console.log('Puppy stopped monitoring.');
 }
