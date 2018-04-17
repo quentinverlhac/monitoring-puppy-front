@@ -7,11 +7,9 @@ let socket;
 
 function monitor() {
   axios.get(`${config.urlBack}/monitoring`);
-  socket = io(config.urlBack);
-  socket.on('connection', (connectedSocket) => {
-    connectedSocket.on('statistics', (statistics) => {
-      console.log(statistics);
-    });
+  socket = io('http://localhost:8080');
+  socket.on('statistics', (statistics) => {
+    console.log(statistics);
   });
   console.log('Puppy is monitoring !');
 }
