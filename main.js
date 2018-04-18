@@ -33,7 +33,7 @@ program
   .option('-n, --name [string]', 'the new website name')
   .option('-u, --url [string]', 'the new website url')
   .option('-i, --interval [number]', 'the new check interval')
-  .description('\n  Update the given fields of the website <website>\n  -n --name [string] the new name of the website\n  -u --url [string] the new url of the website\n  -i --interval [number] the new time interval between website checks (in seconds)\n  Exemple: puppy update -n new.name -i 3 old.name rename old.name to new.name and change its check interval to 3 seconds\n')
+  .description('\n  Update the given fields of the website <website>\n  -n --name [string] the new name of the website\n  -u --url [string] the new url of the website\n  -i --interval [number] the new time interval between website checks (in seconds)\n  Exemple: "puppy update -n new.name -i 3 old.name" will rename old.name to new.name and change its check interval to 3 seconds\n')
   .action(updateWebsite);
 
 // Add website command
