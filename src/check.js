@@ -4,12 +4,12 @@ const config = require('../config.json');
 
 function check() {
   axios.get(`${config.urlBack}/api/monitoring`);
-  console.log('Puppy now pings websites');
+  console.log('Puppy now checks websites');
 }
 
 function stop() {
   axios.delete(`${config.urlBack}/api/monitoring`);
-  console.log('Puppy doesn\'t ping anymore');
+  console.log('Puppy doesn\'t check anymore');
 }
 
 module.exports = {
