@@ -45,17 +45,23 @@ async function listWebsites() {
 // The function which handle the update command
 async function updateWebsite(website, options) {
   try {
-  // Send website update request to back end
-    const response = await axios.put(
-      `${config.urlBack}/api/website/${website}`,
-      {
-        name: options.name,
-        url: options.url,
-        checkInterval: options.interval,
-      },
-    );
-    // Display a confirmation
-    console.log('Puppy will now check %s (%s) every %s sec. when it is monitoring', response.data.name, response.data.url, response.data.checkInterval);
+    if (typeof (options.name) !== 'string' && typeof (options.url) !== 'string' && typeof (options.interval) !== 'string') {
+      // There is no argument
+      console.log('Please enter at least one field to update');
+      console.log('See how to do it using puppy -help');
+    } else {
+      // Send website update request to back end
+      const response = await axios.put(
+        `${config.urlBack}/api/website/${website}`,
+        {
+          name: options.name,
+          url: options.url,
+          checkInterval: options.interval,
+        },
+      );
+      // Display a confirmation
+      console.log('Puppy will now check %s (%s) every %s sec. when it is monitoring', response.data.name, response.data.url, response.data.checkInterval);
+    }
   } catch (err) {
   // The request wasn't successful
     handleError(err);
