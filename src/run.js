@@ -1,7 +1,7 @@
 // Import node modules
 const config = require('../config.json');
 const displayStatistics = require('./statistics');
-const displayAlert = require('./alerts');
+const displayAlert = require('./displayAlert');
 const io = require('socket.io-client');
 
 let socket;
