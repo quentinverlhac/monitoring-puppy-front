@@ -69,7 +69,7 @@ program
 program
   .command('*')
   .action(() => {
-    console.log('Please type puppy -h to see the list of all commands');
+    console.log('Wrong command: please use puppy -h to see the list of all commands');
   });
 
 program.parse(process.argv);
