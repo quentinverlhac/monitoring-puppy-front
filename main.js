@@ -8,6 +8,7 @@ const {
 } = require('./src/website');
 const { monitor, stop } = require('./src/monitoring');
 const run = require('./src/run');
+const getHistory = require('./src/history');
 
 // Define metadata of the application
 program
@@ -51,6 +52,11 @@ program
 program
   .command('run')
   .action(run);
+
+// History command
+program
+  .command('history')
+  .action(getHistory);
 
 program.parse(process.argv);
 
