@@ -18,13 +18,13 @@ program
 // Add website command
 program
   .command('add <website> <url> <check_interval>')
-  .description('\nAdd a website to monitoring\n  <website> [string] is the name of the website\n  <url> [string] is the url of the website\n  <check_interval> [number] is the time interval between each website check\n')
+  .description('\n  Add a website to monitoring\n  <website> [string] the name of the website\n  <url> [string] the url of the website\n  <check_interval> [number] the time interval between each website check (in second)\n')
   .action(addWebsite);
 
 // List monitored websites command
 program
   .command('list')
-  .description('\nList all monitored websites\n')
+  .description('\n  List all monitored websites\n')
   .action(listWebsites);
 
 // Update website command
@@ -33,37 +33,37 @@ program
   .option('-n, --name [string]', 'the new website name')
   .option('-u, --url [string]', 'the new website url')
   .option('-i, --interval [number]', 'the new check interval')
-  .description('\nUpdate one of several fields of the website given by its name <website>\n  -n --name [string] the new name of the website\n  -u --url [string] the new url of the website\n  -i --interval [number] the new time interval between website checks\n')
+  .description('\n  Update the given fields of the website <website>\n  -n --name [string] the new name of the website\n  -u --url [string] the new url of the website\n  -i --interval [number] the new time interval between website checks (in seconds)\n  Exemple: puppy update -n new.name -i 3 old.name rename old.name to new.name and change its check interval to 3 seconds\n')
   .action(updateWebsite);
 
 // Add website command
 program
   .command('remove <website>')
-  .description('\nRemove the website given by its name <website>\n')
+  .description('\n  Remove the website given by its name <website>\n')
   .action(removeWebsite);
 
 // Monitoring command
 program
-  .command('monitor')
-  .description('\nStart the checking of all the websites on the remote server\n  /!\\ CAUTION /!\\ the checking will not stop until "puppy stop" command is run, even if this shell is closed\n')
+  .command('check')
+  .description('\n  Start the checking of all the websites on the remote server\n  /!\\ CAUTION /!\\ the checking will not stop until "puppy stop" command is run, even if this shell is closed\n')
   .action(monitor);
 
 // Stop monitoring command
 program
   .command('stop')
-  .description('\nStop the checking of all websites\n')
+  .description('\n  Stop the checking of all websites\n')
   .action(stop);
 
 // Run command
 program
-  .command('run')
-  .description('\nStart the monitoring of websites\n  Regularly, websites are checked, statistics are displayed and alert are prompted if there is an emergency\n  End the monitoring by pressing CTRL+C in this shell. This will stop the checking.\n')
+  .command('monitor')
+  .description('\n  Start the monitoring of websites\n  Regularly, websites are checked, statistics are displayed and alert are prompted if there is an emergency\n  End the monitoring by pressing CTRL+C in this shell. This will stop the checking.\n')
   .action(run);
 
 // History command
 program
   .command('history')
-  .description('\nGet the history of past alerts\n')
+  .description('\n  Get the history of past alerts\n')
   .action(getHistory);
 
 program
