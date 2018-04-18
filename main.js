@@ -6,8 +6,8 @@ const program = require('commander');
 const {
   addWebsite, listWebsites, updateWebsite, removeWebsite,
 } = require('./src/website');
-const { monitor, stop } = require('./src/monitoring');
-const run = require('./src/run');
+const { check, stop } = require('./src/check');
+const monitor = require('./src/monitor');
 const getHistory = require('./src/history');
 
 // Define metadata of the application
@@ -46,7 +46,7 @@ program
 program
   .command('check')
   .description('\n  Start the checking of all the websites on the remote server\n  /!\\ CAUTION /!\\ the checking will not stop until "puppy stop" command is run, even if this shell is closed\n')
-  .action(monitor);
+  .action(check);
 
 // Stop monitoring command
 program
@@ -58,7 +58,7 @@ program
 program
   .command('monitor')
   .description('\n  Start the monitoring of websites\n  Regularly, websites are checked, statistics are displayed and alert are prompted if there is an emergency\n  End the monitoring by pressing CTRL+C in this shell. This will stop the checking.\n')
-  .action(run);
+  .action(monitor);
 
 // History command
 program

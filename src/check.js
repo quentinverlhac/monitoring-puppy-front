@@ -2,7 +2,7 @@
 const axios = require('axios');
 const config = require('../config.json');
 
-function monitor() {
+function check() {
   axios.get(`${config.urlBack}/api/monitoring`);
   console.log('Puppy now pings websites');
 }
@@ -13,7 +13,7 @@ function stop() {
 }
 
 module.exports = {
-  monitor,
+  check,
   stop,
 };
 

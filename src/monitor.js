@@ -6,7 +6,7 @@ const io = require('socket.io-client');
 
 let socket;
 
-function run() {
+function monitor() {
   socket = io(config.urlBack);
   socket.on('statistics', (statistics) => {
     displayStatistics(statistics);
@@ -17,5 +17,5 @@ function run() {
   console.log('Puppy is monitoring, displaying statistics and sending alerts !');
 }
 
-module.exports = run;
+module.exports = monitor;
 
