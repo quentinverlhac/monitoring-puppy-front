@@ -13,7 +13,7 @@ const getHistory = require('./src/history');
 // Define metadata of the application
 program
   .version('0.1.0')
-  .description('A website monitoring application');
+  .description('Puppy is a website monitoring application.\n  You can add several websites to monitor and run the monitoring to display statistics and alerts.\n  It is also possible to keep on checking websites without displaying messages in the console.');
 
 // Add website command
 program
@@ -58,5 +58,15 @@ program
   .command('history')
   .action(getHistory);
 
+program
+  .command('*')
+  .action(() => {
+    console.log('Please type puppy -h to see the list of all commands');
+  });
+
 program.parse(process.argv);
 
+if (program.args.length < 1) {
+  console.log('Welcome to monitoring puppy, the website monitoring application');
+  console.log('Please type puppy -h to see the list of all commands');
+}
