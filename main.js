@@ -7,6 +7,7 @@ const {
   addWebsite, listWebsites, updateWebsite, removeWebsite,
 } = require('./src/website');
 const { monitor, stop } = require('./src/monitoring');
+const run = require('./src/run');
 
 // Define metadata of the application
 program
@@ -36,7 +37,7 @@ program
   .command('remove <website>')
   .action(removeWebsite);
 
-// Run monitoring command
+// Monitoring command
 program
   .command('monitor')
   .action(monitor);
@@ -45,6 +46,11 @@ program
 program
   .command('stop')
   .action(stop);
+
+// Run command
+program
+  .command('run')
+  .action(run);
 
 program.parse(process.argv);
 
