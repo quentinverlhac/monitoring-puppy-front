@@ -40,7 +40,7 @@ function monitor() {
       screen.render();
     });
     socket.on('alert', (alert) => {
-      displayAlert(alert, logBox);
+      displayAlert(alert, alertBox);
       screen.render();
     });
     console.log('Puppy is monitoring, displaying statistics and sending alerts !');
