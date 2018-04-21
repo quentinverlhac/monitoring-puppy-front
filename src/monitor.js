@@ -5,75 +5,35 @@ const displayAlert = require('./displayAlert');
 const io = require('socket.io-client');
 const handleError = require('./errorHandler');
 const blessed = require('blessed');
+const setUpLogBox = require('./blessedComponents/logBox');
+const setUpAlertBox = require('./blessedComponents/alertBox');
 
 let socket;
 
 
 function monitor() {
   try {
-    // Create a screen object.
+    // Create a screen object
     const screen = blessed.screen({
       smartCSR: true,
       title: 'monitoring-puppy',
     });
 
+    // Create terminal boxes
+    const logBox = setUpLogBox(blessed);
+    const alertBox = setUpAlertBox(blessed);
 
-    // Create a log box
-    const logBox = blessed.box({
-      top: '0%',
-      left: '0%',
-      valign: 'top',
-      align: 'left',
-      width: '50%',
-      height: '100%',
-      content: 'Hello {bold}world{/bold}!',
-      tags: true,
-      scrollable: true,
-      border: {
-        type: 'line',
-      },
-      style: {
-        fg: 'white',
-        bg: 'black',
-        scrollbar: {
-          bg: 'white',
-        },
-      },
-    });
-
-    // Create an alert box
-    const alertBox = blessed.box({
-      top: '0%',
-      left: '50%',
-      valign: 'top',
-      align: 'left',
-      width: '50%',
-      height: '100%',
-      content: 'Hello {bold}world{/bold}!',
-      tags: true,
-      scrollable: true,
-      border: {
-        type: 'line',
-      },
-      style: {
-        fg: 'white',
-        bg: 'black',
-      },
-    });
-
-    // Append our box to the screen.
+    // Append boxes to the screen
     screen.append(logBox);
     screen.append(alertBox);
 
     // Quit on Escape, q, or Control-C.
     screen.key(['escape', 'q', 'C-c'], (ch, key) => process.exit(0));
 
+    // Render the screen
     screen.render();
 
-    logBox.insertBottom('test');
-    logBox.pushLine('test');
-    screen.render();
-
+    // Set up socket connection to back
     socket = io(config.urlBack);
     socket.on('statistics', (statistics) => {
       displayStatistics(statistics, logBox);
