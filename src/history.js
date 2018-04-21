@@ -7,7 +7,7 @@ const handleError = require('./errorHandler');
 async function getHistory() {
   try {
     // Send get history request to back end
-    const response = await axios.get(`${config.urlBack}/api/history/0`);
+    const response = await axios.get(`${config.urlBack}/api/alert/0`);
     displayHistory(response.data);
   } catch (err) {
   // The request wasn't successful
