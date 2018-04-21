@@ -14,7 +14,7 @@ async function displayStatistics(statistics, blessedBox) {
     }
   });
   // A last line to add space between different websites statistics
-  blessedBox.pushLine('');
+  blessedBox.log('');
 }
 
 module.exports = displayStatistics;

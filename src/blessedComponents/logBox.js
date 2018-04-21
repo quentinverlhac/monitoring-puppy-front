@@ -10,15 +10,18 @@ function setUpLogBox(blessed) {
     content: 'Puppy will display monitoring statistics here\n',
     tags: true,
     scrollable: true,
+    scrollbar: {
+      ch: ' ',
+      inverse: true,
+    },
+    keys: true,
+    scrollOnInput: false,
     border: {
       type: 'line',
     },
     style: {
       fg: 'white',
       bg: 'black',
-      scrollbar: {
-        bg: 'white',
-      },
     },
   });
   return logBox;
