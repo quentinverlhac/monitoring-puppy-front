@@ -28,14 +28,22 @@ async function listWebsites() {
   try {
   // Retrieve websites from back end
     const response = await axios.get(`${config.urlBack}/api/website`);
-    // Display website
-    console.log('Puppy has registered the following websites:');
-    console.log('-------------------------------------');
-    console.log('name - url - check interval (seconds)');
-    console.log('-------------------------------------');
-    response.data.map((website) => {
-      console.log(website.name, '-', website.url, '-', website.checkInterval);
-    });
+    if (response.data.length > 0) {
+      // Display website
+      console.log('Puppy has registered the following websites:');
+      console.group();
+      console.log('');
+      console.log('name - url - check interval (seconds)');
+      console.log('-------------------------------------');
+      response.data.map((website) => {
+        console.log(website.name, '-', website.url, '-', website.checkInterval);
+      });
+      console.log('-------------------------------------');
+      console.groupEnd();
+    } else {
+      console.log('Puppy has no website registered yet');
+      console.log('To add website, use puppy add (see puppy --help for more information)');
+    }
   } catch (err) {
   // The request wasn't successful
     handleError(err);
