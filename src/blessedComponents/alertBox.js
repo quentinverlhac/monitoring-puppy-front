@@ -1,6 +1,6 @@
 function setUpAlertBox(blessed) {
   // Create an alert box
-  const alertBox = blessed.box({
+  const alertBox = blessed.log({
     top: '0%',
     left: '50%',
     valign: 'top',
