@@ -3,20 +3,25 @@ function setUpAlertBox(blessed) {
   const alertBox = blessed.log({
     top: '0%',
     left: '50%',
-    valign: 'top',
-    align: 'left',
     width: '50%',
     height: '100%',
-    content: 'Puppy will display monitoring alerts here\n',
-    tags: true,
-    scrollable: true,
-    border: {
-      type: 'line',
-    },
     style: {
       fg: 'white',
       bg: 'black',
     },
+    border: {
+      type: 'line',
+    },
+    tags: true,
+    content: 'Puppy will display monitoring alerts here\n',
+    scrollable: true,
+    scrollbar: {
+      ch: ' ',
+      inverse: true,
+    },
+    mouse: true,
+    keys: true,
+    vi: true,
   });
   return alertBox;
 }
