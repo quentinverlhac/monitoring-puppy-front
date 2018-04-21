@@ -7,7 +7,7 @@ function setUpLogBox(blessed) {
     align: 'left',
     width: '50%',
     height: '100%',
-    content: 'Hello {bold}world{/bold}!',
+    content: 'Puppy will display monitoring statistics here\n',
     tags: true,
     scrollable: true,
     border: {
