@@ -1,6 +1,6 @@
 function setUpLogBox(blessed) {
   // Create a log box
-  const logBox = blessed.box({
+  const logBox = blessed.log({
     top: '0%',
     left: '0%',
     valign: 'top',
