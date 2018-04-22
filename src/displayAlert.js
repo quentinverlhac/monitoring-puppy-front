@@ -1,5 +1,8 @@
+// This function is responsible for displaying alerts in blessed alertBox terminal
 async function displayAlert(alert, blessedBox) {
+  // Refactor the date to be human readable
   const date = (new Date(alert.dateTimestamp)).toLocaleString();
+  // Compute the status flag (red for DOWN alert, green for UP alert)
   let statusTag = '{red-fg}DOWN{/}';
   if (alert.status === 'up') {
     statusTag = '{green-fg}UP{/}';
@@ -11,5 +14,6 @@ async function displayAlert(alert, blessedBox) {
   blessedBox.pushLine('');
 }
 
+// Export function
 module.exports = displayAlert;
 
