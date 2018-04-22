@@ -5,8 +5,8 @@ const displayAlert = require('./displayAlert');
 const io = require('socket.io-client');
 const handleError = require('./errorHandler');
 const blessed = require('blessed');
-const setUpLogBox = require('./blessedComponents/logBox');
-const setUpAlertBox = require('./blessedComponents/alertBox');
+const setUpLogBox = require('./blessedComponent/logBox');
+const setUpAlertBox = require('./blessedComponent/alertBox');
 
 let socket;
 
