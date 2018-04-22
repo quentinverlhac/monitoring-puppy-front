@@ -1,4 +1,4 @@
-// This function is responsible for displaying alerts in blessed alertBox terminal
+// This function is responsible for displaying alerts in blessed alertBox in terminal
 async function displayAlert(alert, blessedBox) {
   // Refactor the date to be human readable
   const date = (new Date(alert.dateTimestamp)).toLocaleString();
