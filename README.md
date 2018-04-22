@@ -3,6 +3,8 @@
 This is the front end of Puppy monitoring application.
 It is responsible for managing the Command Line Interface, sending requests to the back end and displaying informations.
 
+Learn more in PUPPY.md
+
 Table of Contents:
 - Launch the front end in development environment
 - Usage
