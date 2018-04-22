@@ -21,6 +21,17 @@ To use the front end
 Now you can run puppy commands using the syntax `node puppy <command>`
 For instance, run `node puppy --help` to see the list of available commands
 
+### Communicate with the back end using Windows and Docker Toolbox
+
+On **Windows**, you can run the back end using **Docker Toolbox**. The containers will run on a Docker Virtual Machine which has **a different IP adresse than localhost**.
+Container ports are mapped to the Docker VM IP adresse and not to the localhost.
+
+Therefore, to be able to communicate with the back end, you have to do the following modification:
+- Run `docker-machine ip` to get the IP adress of the docker machine
+- Copy this IP adress
+- Open *config.json* file
+- Replace *localhost* by the docker-machine IP adress
+
 ### Make puppy command global
 
 - Open a terminal at the front end folder
