@@ -1,0 +1,41 @@
+# Front end of puppy monitoring application
+
+This is the front end of Puppy monitoring application.
+It is responsible for managing the Command Line Interface, sending requests to the back end and displaying informations.
+
+Table of Contents:
+- Launch the front end in development environment
+- Architecture of the front end
+
+## Use the front end in development environment
+
+The front end requires the back end containers to run **on the same computer** to be functional.
+Please start by running the back end (see README.md in Puppy back end repository)
+
+To use the front end
+- Install Node.js, if it is not already done
+- Open a terminal at the front end folder
+- Run `npm install` to install dependencies
+- Run `node puppy` to display the welcome message from puppy
+
+Now you can run puppy commands using the syntax `node puppy <command>`
+For instance, run `node puppy --help` to see the list of available commands
+
+### Make puppy command global
+
+- Open a terminal at the front end folder
+- Run `sudo npm link` to make puppy a global command
+- Run `puppy` to display welcome message from puppy
+
+Now you can run puppy commands using the syntax `puppy <command>`
+For instance, run `puppy --help` to see the list of available commands
+
+## Architecture of the front end
+
+The front end mainly consist of several commands. These commands are defined in the *puppy.js* file.
+Each command calls a function defined in a file located in *src/*.
+
+*Displayers* are the functions responsible for displaying the informations sent by the back end.
+They can be found in the *src/displayer/* folder.
+
+The `puppy monitor` command line uses **blessed** module to render a customized terminal interface which display alerts and statistics. It uses box components defined in the *src/blessedComponent* folder.
