@@ -66,14 +66,17 @@ program
   .description('\n  Get the history of past alerts\n')
   .action(getHistory);
 
+// Default command: when the user enters a non-existing command
 program
   .command('*')
   .action(() => {
     console.log('Wrong command: please use puppy -h to see the list of all commands');
   });
 
+// Parse user input
 program.parse(process.argv);
 
+// If there is no user input, display a default welcome message
 if (program.args.length < 1) {
   console.log('Welcome to monitoring puppy, the website monitoring application');
   console.log('Please type puppy -h to see the list of all commands');
