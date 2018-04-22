@@ -9,6 +9,7 @@ const {
 const { check, stop } = require('./src/check');
 const monitor = require('./src/monitor');
 const getHistory = require('./src/history');
+const addTests = require('./src/test');
 
 // Define metadata of the application
 program
@@ -65,6 +66,12 @@ program
   .command('history')
   .description('\n  Get the history of past alerts\n')
   .action(getHistory);
+
+// Run command
+program
+  .command('test')
+  .description('\n  Add the alert and the response codes test routes to the website list.\n')
+  .action(addTests);
 
 // Default command: when the user enters a non-existing command
 program
