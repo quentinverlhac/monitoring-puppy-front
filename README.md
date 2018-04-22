@@ -5,7 +5,12 @@ It is responsible for managing the Command Line Interface, sending requests to t
 
 Table of Contents:
 - Launch the front end in development environment
+- Usage
 - Architecture of the front end
+- Tests
+
+
+
 
 ## Use the front end in development environment
 
@@ -41,7 +46,48 @@ Therefore, to be able to communicate with the back end, you have to do the follo
 Now you can run puppy commands using the syntax `puppy <command>`
 For instance, run `puppy --help` to see the list of available commands
 
+
+
+
+## Usage
+
+The global syntax is `node puppy [options] [command]` or `puppy [options] [command]` if you set up the global command.
+You can get more information using `node puppy --help`.
+
+Here is a list of all the commands of Puppy:
+
+- `add <website> <url> <check_interval>` : Add a website to monitoring
+      `<website> [string]` the name of the website
+      `<url> [string]` the url of the website
+      `<check_interval> [number]` the time interval between each website check (in second)
+
+- `list` : List all monitored websites
+
+- `update [options] <website>` : Update the given fields of the website
+      `-n --name [string]` the new name of the website
+      `-u --url [string]` the new url of the website
+      `-i --interval [number]` the new time interval between website checks (in seconds)
+
+- `remove <website>` : Remove the website given by its name <website>
+
+- `check` : Start the checking of all the websites on the remote server
+    **Warning:** the checking will not stop until `stop` command is run, even if this shell is closed
+
+- `stop` : Stop the checking of all websites
+
+- `monitor` : Start the monitoring of websites. End the monitoring by pressing Escape, q or CTRL+C in this shell.
+
+- `history`: Get the history of past alerts
+
+- `test` : Add the alert and the response codes test routes to the website list.
+
+
 ## Architecture of the front end
+
+The front end run with **Node.js**. It is based on a few modules such as:
+- **Commander** for the CLI
+- **Axios** for the HTTP requests
+- **Blessed** for the custom terminal interface
 
 The front end mainly consist of several commands. These commands are defined in the *puppy.js* file.
 Each command calls a function defined in a file located in *src/*.
