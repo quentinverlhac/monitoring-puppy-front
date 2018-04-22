@@ -50,3 +50,18 @@ Each command calls a function defined in a file located in *src/*.
 They can be found in the *src/displayer/* folder.
 
 The `puppy monitor` command line uses **blessed** module to render a customized terminal interface which display alerts and statistics. It uses box components defined in the *src/blessedComponent* folder.
+
+## Tests
+
+When `puppy monitor` command is running, the back end send alerts to the front end:
+- **DOWN** alerts are sent when the availability of a website goes under 80% for the last 2 minutes
+- **UP** alerts are sent when the availability of a website goes back over 80% for the last 2 minutes
+
+To test the alerts, the back end exposes a route. It simulates a website that periodically breaks and goes back up.
+While monitoring this route, the back end will regularly send *down* and *up* alerts.
+
+There is also a response codes test route. It generates random status codes in the response. The back end will record the number of each codes and send it in the statistics.
+
+To monitor these routes, use the following commands:
+- `puppy test` to add the tests route 
+- `puppy monitor` to start monitoring the websites
