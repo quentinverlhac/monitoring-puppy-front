@@ -1,5 +1,5 @@
 function setUpAlertBox(blessed) {
-  // Create an alert box
+  // Create an alert box used by blessed module in terminal
   const alertBox = blessed.log({
     top: '0%',
     left: '50%',

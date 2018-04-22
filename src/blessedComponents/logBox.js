@@ -1,5 +1,5 @@
 function setUpLogBox(blessed) {
-  // Create a log box
+  // Create a log box used by blessed module in terminal
   const logBox = blessed.log({
     top: '0%',
     left: '0%',
