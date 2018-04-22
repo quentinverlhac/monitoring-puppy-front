@@ -2,9 +2,9 @@
   "name": "puppy",
   "version": "0.1.0",
   "description": "The frontend of a website monitoring application",
-  "main": "main.js",
+  "main": "puppy.js",
   "preferGlobal": true,
-  "bin": "./main.js",
+  "bin": "./puppy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
