@@ -4,6 +4,7 @@ const config = require('../config.json');
 const handleError = require('./errorHandler');
 
 // The function which handle the add command
+// It sends a website creation request to the back
 async function addWebsite(website, url, check_interval) {
   try {
   // Send website creation request to back end
@@ -24,6 +25,7 @@ async function addWebsite(website, url, check_interval) {
 }
 
 // The function which handle the list command
+// It sends a website list request to the back
 async function listWebsites() {
   try {
   // Retrieve websites from back end
@@ -31,6 +33,7 @@ async function listWebsites() {
     if (response.data.length > 0) {
       // Display website
       console.log('Puppy has registered the following websites:');
+      // console.group() is used to add indentation
       console.group();
       console.log('');
       console.log('name - url - check interval (seconds)');
@@ -51,13 +54,15 @@ async function listWebsites() {
 }
 
 // The function which handle the update command
+// It sends a website update request to the back
 async function updateWebsite(website, options) {
   try {
     if (typeof (options.name) !== 'string' && typeof (options.url) !== 'string' && typeof (options.interval) !== 'string') {
-      // There is no argument
+      // If there is no argument, asked the user to add some
       console.log('Please enter at least one field to update');
       console.log('See how to do it using puppy -help');
     } else {
+      // There are arguments
       // Send website update request to back end
       const response = await axios.put(
         `${config.urlBack}/api/website/${website}`,
@@ -68,6 +73,7 @@ async function updateWebsite(website, options) {
         },
       );
       // Display a confirmation
+      // The back end is responsible for checking if the input is correct
       console.log('Puppy will now check %s (%s) every %s sec. when it is monitoring', response.data.name, response.data.url, response.data.checkInterval);
     }
   } catch (err) {
@@ -77,6 +83,7 @@ async function updateWebsite(website, options) {
 }
 
 // The function which handle the remove command
+// It sends a delete website request to the back
 async function removeWebsite(website) {
   try {
   // Send website creation request to back end
@@ -89,6 +96,7 @@ async function removeWebsite(website) {
   }
 }
 
+// Export functions
 module.exports = {
   addWebsite,
   listWebsites,
