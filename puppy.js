@@ -58,7 +58,7 @@ program
 // Run command
 program
   .command('monitor')
-  .description('\n  Start the monitoring of websites\n  Regularly, websites are checked, statistics are displayed and alert are prompted if there is an emergency\n  End the monitoring by pressing CTRL+C in this shell. This will stop the checking.\n')
+  .description('\n  Start the monitoring of websites\n  Regularly, websites are checked, statistics are displayed and alert are prompted if there is an emergency\n  End the monitoring by pressing Escape, q or CTRL+C in this shell. This will stop the checking.\n')
   .action(monitor);
 
 // History command
