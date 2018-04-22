@@ -1,7 +1,7 @@
 // Import node modules
 const axios = require('axios');
 const config = require('../config.json');
-const displayHistory = require('./displayHistory');
+const displayHistory = require('./displayer/displayHistory');
 const handleError = require('./errorHandler');
 
 // This function calls the get history route of the back
